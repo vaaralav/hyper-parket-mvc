@@ -2,7 +2,7 @@
 import { hyper } from 'hyperhtml/esm';
 import hyperApp from 'hyperhtml-app';
 import TodoStore, { SHOW_ALL } from './model/todo';
-import { devtools } from 'parket';
+import devtools from 'parket/devtools';
 
 const localStorageKey = 'hyper-parket-mvc';
 const initialState = localStorage.getItem(localStorageKey)
@@ -13,48 +13,43 @@ const initialState = localStorage.getItem(localStorageKey)
           text: 'learn Mobx',
           completed: false,
           id: 0,
-          __p_model: 'Todo'
+          __p_model: 'Todo',
         },
         {
           text: 'learn MST',
           completed: false,
           id: 1,
-          __p_model: 'Todo'
-        }
-      ]
+          __p_model: 'Todo',
+        },
+      ],
     };
 
 const store = TodoStore(initialState);
 
-const app = hyperApp();
+devtools(store);
 
-const Link = ({ to, label }) => {
-  const link = hyper`<a href="${to}">${label}</a>`;
-  link.addEventListener('click', {
-    handleEvent: function(event) {
-      event.preventDefault();
-      app.navigate(to);
-    }
-  });
-  return link;
-};
+store.onSnapshot(snapshot => {
+  localStorage.setItem(localStorageKey, JSON.stringify(snapshot));
+});
+
+const app = hyperApp();
 
 const Links = hyper`
 <div>
   <ul>
-  <li>${Link({ to: '/', label: 'all' })}</li>
-  <li>${Link({ to: '/show_completed', label: 'completed' })}</li>
-  <li>${Link({ to: '/show_active', label: 'active' })}</li>
+  <li><a href="/">all</a></li>
+  <li><a href="/show_completed">completed</a></li>
+  <li><a href="/show_active">active</a></li>
   </ul>
-</div
+</div>
 `;
 
-app.use(['/', '/:filter'], function serveTodos(ctx) {
+function serveTodos(ctx) {
   store.setFilter(ctx.params.filter || SHOW_ALL);
   hyper(document.getElementById('todo'))`<h1>TODO</h1>
     ${Links}
   <pre>${JSON.stringify(store.filteredTodos, null, 2)}</pre>`;
-});
+}
+app.use(['/', '/:filter'], serveTodos);
 
-//
 app.navigate(window.location.pathname);
