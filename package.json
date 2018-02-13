@@ -6,6 +6,7 @@
   "author": "Ville Vaarala <ville.l.vaarala@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "dev": "webpack-dev-server",
     "build": "rimraf dist/ && webpack",
     "lint": "eslint src/ && prettylint README.md",
     "lint:fix": "eslint src/ --fix && prettylint README.md --fix"
@@ -33,6 +34,8 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "hyperhtml": "^2.5.10"
+    "hyperhtml": "^2.5.10",
+    "hyperhtml-app": "^0.2.1",
+    "parket": "^0.2.1"
   }
 }

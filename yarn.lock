@@ -2732,6 +2732,13 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
+hyperhtml-app@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/hyperhtml-app/-/hyperhtml-app-0.2.1.tgz#4ae6dcadd5fec0bdabedf5e6055e8886f6ed46e7"
+  dependencies:
+    onpushstate "^0.1.1"
+    path-to-regexp "^1.7.0"
+
 hyperhtml@^2.5.10:
   version "2.5.10"
   resolved "https://registry.yarnpkg.com/hyperhtml/-/hyperhtml-2.5.10.tgz#d52eac4fd07b73e7b06dbf5a4c8e354208cb0131"
@@ -3525,6 +3532,10 @@ minimist@~0.0.1:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
+mitt@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/mitt/-/mitt-1.1.3.tgz#528c506238a05dce11cd914a741ea2cc332da9b8"
+
 mixin-deep@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.3.1.tgz#a49e7268dce1a0d9698e45326c5626df3543d0fe"
@@ -3769,6 +3780,10 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+onpushstate@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/onpushstate/-/onpushstate-0.1.1.tgz#cfc0a121b5c1fe73070fe02ed18544659dc1d3ee"
+
 openssl-self-signed-certificate@1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/openssl-self-signed-certificate/-/openssl-self-signed-certificate-1.1.6.tgz#9d3a4776b1a57e9847350392114ad2f915a83dd4"
@@ -3885,6 +3900,12 @@ param-case@2.1.x:
   dependencies:
     no-case "^2.2.0"
 
+parket@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/parket/-/parket-0.2.1.tgz#c97d3d9441a7c6f2d603270fecea23dcda9978fd"
+  dependencies:
+    mitt "^1.1.3"
+
 parse-asn1@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/parse-asn1/-/parse-asn1-5.1.0.tgz#37c4f9b7ed3ab65c74817b5f2480937fbf97c712"
@@ -3955,6 +3976,12 @@ path-parse@^1.0.5:
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
+
+path-to-regexp@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
+  dependencies:
+    isarray "0.0.1"
 
 path-type@3.0.0:
   version "3.0.0"
