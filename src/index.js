@@ -39,14 +39,21 @@ const Link = ({ to, label }) => {
   return link;
 };
 
+const Links = hyper`
+<div>
+  <ul>
+  <li>${Link({ to: '/', label: 'all' })}</li>
+  <li>${Link({ to: '/show_completed', label: 'completed' })}</li>
+  <li>${Link({ to: '/show_active', label: 'active' })}</li>
+  </ul>
+</div
+`;
+
 app.use(['/', '/:filter'], function serveTodos(ctx) {
   store.setFilter(ctx.params.filter || SHOW_ALL);
   hyper(document.getElementById('todo'))`<h1>TODO</h1>
-  <div>
-    ${Link({ to: '/', label: 'all' })}
-    ${Link({ to: '/show_completed', label: 'completed' })}
-    ${Link({ to: '/show_active', label: 'active' })}
-</div><pre>${JSON.stringify(store.filteredTodos, null, 2)}</pre>`;
+    ${Links}
+  <pre>${JSON.stringify(store.filteredTodos, null, 2)}</pre>`;
 });
 
 //
