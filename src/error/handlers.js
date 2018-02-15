@@ -1,5 +1,5 @@
 import NotFound from './components/NotFound';
 
-export const getNotFoundHandler = () => (ctx, next) => {
+export const getNotFoundHandler = () => () => {
   return NotFound();
 };

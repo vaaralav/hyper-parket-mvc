@@ -1,5 +1,4 @@
 // import 'todomvc-app-css/index.css';
-import { hyper } from 'hyperhtml';
 import hyperApp from 'hyperhtml-app';
 import createStore from '$src/store';
 import getTodoHandler from '$src/todo/handlers';

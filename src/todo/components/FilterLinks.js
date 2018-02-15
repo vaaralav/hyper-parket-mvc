@@ -2,7 +2,7 @@ import { hyper } from 'hyperhtml';
 import { getFilterLabel } from '../utils';
 import { Filters } from '../constants';
 
-export default () => hyper`
+export default hyper`
 <ul>
   ${Object.values(Filters).map(
     filter =>
@@ -11,5 +11,6 @@ export default () => hyper`
     </li>
     `
   )}
+  <li><a href="/404">Not Found</a></li>
 </ul>
 `;

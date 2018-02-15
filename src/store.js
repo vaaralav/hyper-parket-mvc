@@ -29,6 +29,15 @@ export default function createStore() {
   store.onSnapshot(snapshot => {
     localStorage.setItem(localStorageKey, JSON.stringify(snapshot));
   });
+  if (console && console.log) {
+    // eslint-disable no-console
+
+    store.onAction(console.log.bind(console, 'action'));
+    // store.onPatch(console.log.bind(console, 'patch'));
+    store.onSnapshot(console.log.bind(console, 'snapshot'));
+
+    // eslint-enable no-console
+  }
 
   return store;
 }
