@@ -5,13 +5,20 @@ export default {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    alias: {
+      $src: path.resolve(__dirname, 'src'),
+      hyperhtml: 'hyperhtml/esm',
+    },
   },
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }],
   },
   plugins: [new HtmlWebpackPlugin({ template: 'src/index.html' })],
   devServer: {
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
+  devtool: 'eval-source-map',
 };

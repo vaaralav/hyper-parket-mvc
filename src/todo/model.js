@@ -1,14 +1,11 @@
 import model from 'parket';
-
-export const SHOW_ALL = 'show_all';
-export const SHOW_COMPLETED = 'show_completed';
-export const SHOW_ACTIVE = 'show_active';
+import { Filters } from './constants';
 
 // const filterType = types.union(...[SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE].map(types.literal))
 const TODO_FILTERS = {
-  [SHOW_ALL]: () => true,
-  [SHOW_ACTIVE]: todo => !todo.completed,
-  [SHOW_COMPLETED]: todo => todo.completed,
+  [Filters.SHOW_ALL]: () => true,
+  [Filters.SHOW_ACTIVE]: todo => !todo.completed,
+  [Filters.SHOW_COMPLETED]: todo => todo.completed,
 };
 
 const Todo = model('Todo', {
@@ -27,7 +24,7 @@ const Todo = model('Todo', {
 const TodoStore = model('TodoStore', {
   initial: () => ({
     todos: [],
-    filter: SHOW_ALL,
+    filter: Filters.SHOW_ALL,
   }),
   views: self => ({
     completedCount: () =>
