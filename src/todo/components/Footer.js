@@ -10,6 +10,12 @@ const filters = wire(Filters)`
 </ul>
 `;
 
+function clearCompleted(store) {
+  return function() {
+    store.clearCompleted();
+  };
+}
+
 export default store => wire(store, ':footer')`
 <footer class="footer" style=${
   store.todos.length === 0 ? 'display: none;' : ''
@@ -20,5 +26,8 @@ export default store => wire(store, ':footer')`
 } left
   </span>
   ${filters}
+  <button class="clear-completed" onclick=${clearCompleted(store)} style=${
+  store.completedCount ? '' : 'display: none;'
+} >Clear completed</button>
 </footer>
 `;
