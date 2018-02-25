@@ -22,9 +22,17 @@ function onBlur() {
   form.submit();
 }
 
+function toggleAll(store) {
+  return function() {
+    store.completeAll();
+  };
+}
+
 export default store => wire(store, ':main')`
 <section class="main" style=${store.todos.length === 0 ? 'display: none;' : ''}>
-<input id="toggle-all" name="toggle-all" class="toggle-all" type="checkbox"/>
+<input id="toggle-all" name="toggle-all" class="toggle-all" type="checkbox" onchange=${toggleAll(
+  store
+)} />
 <label for="toggle-all">Mark all as complete</label>
 <ul class="todo-list">
 ${store.filteredTodos.map(
