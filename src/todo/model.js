@@ -17,7 +17,7 @@ const Todo = model('Todo', {
   actions: self => ({
     remove: () => self.getRoot().removeTodo(self),
     edit: text => (self.text = text),
-    complete: () => (self.completed = !self.completed),
+    toggle: () => (self.completed = !self.completed),
   }),
 });
 

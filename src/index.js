@@ -7,9 +7,6 @@ import { getNotFoundHandler } from '$src/error/handlers';
 
 const app = hyperApp();
 export const store = createStore();
-console.log({ store });
-
-console.log('foobar');
 
 app
   .use(['/', '/:filter'], getTodoHandler(store))

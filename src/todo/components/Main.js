@@ -1,7 +1,28 @@
 import { wire } from 'hyperhtml';
-import { store } from '$src/index';
 
-export default () => wire(store.todos)`
+function doubleClickToEdit() {
+  const li = this.closest('li');
+  li.classList.add('editing');
+  li.querySelector('.edit').focus();
+}
+
+const getOnSubmit = todo =>
+  function onSave(ev) {
+    ev.preventDefault();
+    const input = ev.target.elements[0];
+    if (input.value) {
+      todo.edit(input.value.trim());
+      const li = this.closest('li');
+      li.classList.remove('editing');
+    }
+  };
+
+function onBlur() {
+  const form = this.closest('form');
+  form.submit();
+}
+
+export default store => wire(store, ':main')`
 <section class="main" style=${store.todos.length === 0 ? 'display: none;' : ''}>
 <input id="toggle-all" name="toggle-all" class="toggle-all" type="checkbox"/>
 <label for="toggle-all">Mark all as complete</label>
@@ -10,13 +31,17 @@ ${store.filteredTodos.map(
   todo => wire(todo)`
   <li class=${todo.completed ? 'completed' : ''}>
     <div class="view">
-      <label>
-        <input class="toggle" type="checkbox" checked=${todo.completed}/>
-        ${todo.text}
-      </label>
-      <button type="button" class="destroy"></button>
+        <input class="toggle" type="checkbox" checked=${
+          todo.completed
+        } onchange=${todo.toggle} />
+        <label onDblClick=${doubleClickToEdit}>
+          ${todo.text}
+        </label>
+      <button type="button" class="destroy" onclick=${todo.remove}></button>
     </div>
-    <input class="edit" value=${todo.text}>
+    <form onsubmit=${getOnSubmit(todo)}>
+      <input class="edit" value=${todo.text} onblur=${onBlur}>
+    </form>
   </li>
   `
 )}

@@ -1,22 +1,21 @@
 import { wire } from 'hyperhtml';
-import { store } from '$src/index';
 
-function handleSubmit(ev) {
-  ev.preventDefault();
-  console.log(ev.target.elements);
-  const input = ev.target.elements[0];
-  const todoText = input.value;
-  if (todoText) {
-    store.addTodo(todoText.trim());
-    input.value = '';
-  }
-}
+const getHandleSubmit = store =>
+  function handleSubmit(ev) {
+    ev.preventDefault();
+    const input = ev.target.elements[0];
+    const todoText = input.value;
+    if (todoText) {
+      store.addTodo(todoText.trim());
+      input.value = '';
+    }
+  };
 
-export default () => {
-  return wire()`
+export default store => {
+  return wire(store, ':header')`
 <header class="header">
   <h1>todos</h1>
-  <form onsubmit=${handleSubmit}>
+  <form onsubmit=${getHandleSubmit(store)}>
     <input class="new-todo" placeholder="What needs to be done?" autofocus/>
   </form>
 </header>

@@ -14,7 +14,7 @@ export default store => (ctx, next) => {
   const { filter = Filters.SHOW_ALL } = ctx.params;
   if (validateFilter(filter)) {
     store.setFilter(filter);
-    return renderRoute(store, () => TodoApp());
+    return renderRoute(store, () => TodoApp(store));
   }
   getNotFoundHandler(store)(ctx, next);
 };
