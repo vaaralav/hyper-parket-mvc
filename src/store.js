@@ -6,6 +6,7 @@ const initialState = localStorage.getItem(localStorageKey)
   ? JSON.parse(localStorage.getItem(localStorageKey))
   : {
       todos: [
+        /*
         {
           text: 'learn Mobx',
           completed: false,
@@ -18,6 +19,7 @@ const initialState = localStorage.getItem(localStorageKey)
           id: 1,
           __p_model: 'Todo',
         },
+      */
       ],
     };
 

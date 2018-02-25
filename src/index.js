@@ -1,11 +1,15 @@
-// import 'todomvc-app-css/index.css';
+import 'todomvc-common/base.css';
+import 'todomvc-app-css/index.css';
 import hyperApp from 'hyperhtml-app';
 import createStore from '$src/store';
 import getTodoHandler from '$src/todo/handlers';
 import { getNotFoundHandler } from '$src/error/handlers';
 
 const app = hyperApp();
-const store = createStore();
+export const store = createStore();
+console.log({ store });
+
+console.log('foobar');
 
 app
   .use(['/', '/:filter'], getTodoHandler(store))

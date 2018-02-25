@@ -1,10 +1,18 @@
-import mount from '$src/root';
+import { wire } from 'hyperhtml';
+import html from '$src/root';
 import FilterLinks from './FilterLinks';
+import createHeader from './Header';
+import createMain from './Main';
+import createFooter from './Footer';
 
-export default function renderTodoApp(store) {
-  return mount`<h1><a href="/">TODO</a></h1>
-    ${FilterLinks}
-    <button type="button" onclick="${() =>
-      store.addTodo('foo')}">Add Todo</button>
-  <pre>${JSON.stringify(store.filteredTodos, null, 2)}</pre>`;
-}
+export default () => {
+  const Header = createHeader();
+  const Main = createMain();
+  const Footer = createFooter();
+
+  return html`
+${Header}
+${Main}
+${Footer}
+`;
+};

@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "rimraf dist/ && webpack",
+    "start": "serve dist/",
     "lint": "eslint src/ && prettylint README.md",
     "lint:fix": "eslint src/ --fix && prettylint README.md --fix"
   },
@@ -17,6 +18,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "css-loader": "^0.28.10",
     "eslint": "^4.17.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -30,12 +32,15 @@
     "prettylint": "^1.0.0",
     "rimraf": "^2.6.2",
     "serve": "^6.4.9",
+    "style-loader": "^0.20.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "hyperhtml": "^2.5.10",
     "hyperhtml-app": "^0.2.1",
-    "parket": "^0.2.1"
+    "parket": "^0.2.1",
+    "todomvc-app-css": "^2.1.0",
+    "todomvc-common": "^1.0.4"
   }
 }
