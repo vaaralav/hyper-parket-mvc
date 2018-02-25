@@ -10,10 +10,13 @@ const getOnSubmit = todo =>
   function onSave(ev) {
     ev.preventDefault();
     const input = ev.target.elements[0];
+    const value = input.value.trim();
     if (input.value) {
       todo.edit(input.value.trim());
       const li = this.closest('li');
       li.classList.remove('editing');
+    } else {
+      todo.remove();
     }
   };
 
