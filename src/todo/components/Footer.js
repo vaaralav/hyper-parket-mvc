@@ -15,8 +15,8 @@ export default store => wire(store, ':footer')`
   store.todos.length === 0 ? 'display: none;' : ''
 }>
   <span class="todo-count">
-    <strong>${store.todos.length}</strong> item${
-  store.todos.length === 1 ? '' : 's'
+    <strong>${store.activeCount}</strong> item${
+  store.activeCount === 1 ? '' : 's'
 } left
   </span>
   ${filters}
